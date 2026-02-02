@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* Instagram Card */
+.insta-card {
+    width: 100%;
+    max-width: 390px;
+    background: white;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Photo */
+.photo img {
+    width: 100%;
+    display: block;
+}
+
+/* Content */
+.content {
+    padding: 15px;
+}
+
+.heart {
+    font-size: 32px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.message {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.yes {
+    background: #ed4956;
+    color: white;
+}
+
+.no {
+    background: #eee;
+}
+
+/* Footer */
+.footer {
+    padding: 10px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+}
+
+/* Floating Hearts */
+.floating-heart {
+    position: absolute;
+    bottom: -30px;
+    font-size: 20px;
+    animation: floatUp linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="insta-card" id="card">
+    <div class="header">❤️ Valentine Special</div>
+
+    <div class="photo">
+        <img src="Baby 1.jpg" alt="Us Together">
+    </div>
+
+    <div class="content">
+        <div class="heart">❤️</div>
+
+        <div class="message">
+            <strong>My Love, <span id="name">Her Name</span></strong><br><br>
+            Every smile of yours makes my day brighter Darling.
+            Keep Smiling and Loving me Always.
+            <br><br>
+            Will you be my Valentine Chuhiye? 💕
+        </div>
+
+        <div class="buttons">
+            <button class="yes" onclick="acceptLove()">Yes 💖</button>
+            <button class="no" onclick="alert('No is not an option 😜')">No 🙈</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        Made with Love❤️ From Your Naadan Chikuu just for you
+    </div>
+</div>
+
+<audio id="bgMusic" src="Chuhiye.mp3" loop></audio>
+
+<script>
+/* Change her name here */
+document.getElementById("name").innerText = "Chuhiye"; // <-- CHANGE NAME
+
+/* Floating Hearts Generator */
+const card = document.getElementById("card");
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.innerText = "❤️";
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+    card.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 500);
+
+/* On Yes Click */
+function acceptLove() {
+    document.getElementById("bgMusic").play();
+
+    document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:linear-gradient(135deg,#ff758c,#ff7eb3);
+            color:white;
+            font-family:Segoe UI;
+            text-align:center;
+            padding:20px;
+        ">
+            <h1>
+                Hehe I knew Yes Vanxau Vanerw💖<br><br>
+                I Love You My Chuhiye😘
+            </h1>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
